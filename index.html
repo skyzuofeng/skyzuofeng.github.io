@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,48 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="title-如何创建自己的git账号并配置" class="article article-type-title" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/如何创建自己的git账号并配置/" class="article-date">
+  <time datetime="2016-05-12T13:09:32.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/如何创建自己的git账号并配置/">如何创建自己的git账号并配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><h3>创建GitHub账号</h3></p>
+<p><p> 注册GitHub账号，只要点击导航条中的“Signup and Pricing”，或者点击首页中那个大大的“Plans, Pricing and Signup”按钮，即进入收费方案介绍及注册页面。点击免费方案右侧的“Create a free account”按钮，就进入到注册页面，如图所示  请注意是以您的用户名开头的,例如我的为： “ CracKerMe.github.io ” 用户名后面的“.github.io”不得修改，此为您的二级域名。</p><br>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/12/如何创建自己的git账号并配置/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/12/如何创建自己的git账号并配置/" data-id="cio4bbr0n0001k4json9iqo0l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="title-如何运用”hexo“创建静态博客" class="article article-type-title" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -90,23 +132,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>按装的前提</h3><p></p>
-<p></p><p>首先确认你的电脑中安装了一下应用程序</p><p></p>
-<p><ul><br>    <li>Node.js</li><br>    <li>Git</li><br></ul></p>
-<p></p><h3>按装hexo</h3><p></p>
-<p></p><p>Hexo 是一个功能强大的静态网站生成系统，快速、简洁、高效。Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。可以一键部署到github，还有丰富的插件和主题,还支持热部署哦。执行如下命令进行安装。</p><br>   npm install hexo -g<br>  <p>快速开始生成一个新的博客系统，代码如下</p><br>  <li>mkdir blog  <em> 新建一个叫blog的文件夹</em></li><br>  <li>hexo init blog  执行init命令初始化hexo到你指定的目录</li><br>  <li>hexo generate * 自动根据当前目录下文件，生成静态网页</li><p></p>
-<p><li>hexo server * 运行本地服务</li><br>然后再浏览器输入<a href="http://localhost:4000就可以看到效果。" target="_blank" rel="external">http://localhost:4000就可以看到效果。</a></p>
-<p></p><h3>配置生成的静态网页</h3><p></p>
-<p><li>我们可以用Sublime text 打开生成的文件目录可以看到一下文件</li></p>
-<p><li> <img src="http://blog.fens.me/wp-content/uploads/2014/05/hexo-folder.png" alt=""></li><br>scaffolds 脚手架，也就是一个工具模板<br><br>scripts 写文件的js，扩展hexo的功能<br><br>source 存放博客正文内容<br><br>source/_drafts 草稿箱<br><br>source/_posts 文件箱<br><br>themes 存放皮肤的目录<br><br>themes/landscape 默认的皮肤<br><br>_config.yml 全局的配置文件<br><br>db.json 静态常量<br></p>
-<p></p><h3>全局配置</h3><br>_config.yml是全局的配置文件：很多的网站配置都在这个文件中定义。<br><br>站点信息: 定义标题，作者，语言<br><br>URL: URL访问路径<br><br>文件目录: 正文的存储目录<br><br>写博客配置：文章标题，文章类型，外部链接等<br><br>目录和标签：默认分类，分类图，标签图<br><br>归档设置：归档的类型<br><br>服务器设置：IP，访问端口，日志输出<br><br>时间和日期格式： 时间显示格式，日期显示格式<br><br>分页设置：每页显示数量<br><br>评论：外挂的Disqus评论系统<br><br>插件和皮肤：换皮肤，安装插件<br><br>Markdown语言：markdown的标准<br><br>CSS的stylus格式：是否允许压缩<br><br>部署配置：github发布<br><p></p>
-<p></p><h3> 添加博文</h3><p></p>
-<p><li>hexo new title “博客名字”  * 添加一个新的博客</li><br>上面的这个创建是在_posts目录下，就会生成文件：”博客名字.md”。<br></p>
-
+        <p><h3>按装的前提</h3></p>
+<p><p>首先确认你的电脑中安装了一下应用程序</p></p>
+<p><ul><br>    <li>Node.js</li><br>    <li>Git</li><br></ul><br>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/11/如何运用”hexo“创建静态博客/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/如何运用”hexo“创建静态博客/" data-id="cio4889hp0002fcjsi90gbinq" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/05/11/如何运用”hexo“创建静态博客/" data-id="cio4bbr0r0002k4jsyumedwc8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo安装-hexo运通/">hexo安装 hexo运通</a></li></ul>
@@ -145,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cio4889he0001fcjs72kdiltc" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cio4bbr0u0003k4jsz44ymaky" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/hello-world/" data-id="cio4889h40000fcjsh2xktbpt" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/05/11/hello-world/" data-id="cio4bbr0f0000k4js2uvneqte" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +247,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo安装-hexo运通/">hexo安装 hexo运通</a></li></ul>
     </div>
@@ -220,7 +257,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/hexo安装-hexo运通/" style="font-size: 10px;">hexo安装 hexo运通</a>
     </div>
@@ -239,9 +276,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/12/如何创建自己的git账号并配置/">如何创建自己的git账号并配置</a>
+          </li>
         
           <li>
             <a href="/2016/05/11/如何运用”hexo“创建静态博客/">如何运用”hexo“创建静态博客</a>
@@ -268,7 +309,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 左峰<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
