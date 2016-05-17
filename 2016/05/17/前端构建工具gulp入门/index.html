@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-title">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端构建工具gulp入门 | 左峰的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+  
+
+  <meta name="description" content="前言：本文假设你之前没有用过任何任务脚本（task runner）和命令行工具，一步步教你上手Gulp。不要怕，它其实很简单，我会分为五步向你介绍gulp并帮助你完成一些惊人的事情。那就直接开始吧。
+
+第一步：安装Node首先，最基本也最重要的是，我们需要搭建node环境。访问 http://nodejs.org ，然后点击大大的绿色的 install 按钮，下载完成后直接运行程序，就一切准备就绪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端构建工具gulp入门">
+<meta property="og:url" content="http://yoursite.com/2016/05/17/前端构建工具gulp入门/index.html">
+<meta property="og:site_name" content="左峰的博客">
+<meta property="og:description" content="前言：本文假设你之前没有用过任何任务脚本（task runner）和命令行工具，一步步教你上手Gulp。不要怕，它其实很简单，我会分为五步向你介绍gulp并帮助你完成一些惊人的事情。那就直接开始吧。
+
+第一步：安装Node首先，最基本也最重要的是，我们需要搭建node环境。访问 http://nodejs.org ，然后点击大大的绿色的 install 按钮，下载完成后直接运行程序，就一切准备就绪">
+<meta property="og:image" content="http://i2.buimg.com/7f9b166ae359578b.png">
+<meta property="og:updated_time" content="2016-05-17T09:35:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端构建工具gulp入门">
+<meta name="twitter:description" content="前言：本文假设你之前没有用过任何任务脚本（task runner）和命令行工具，一步步教你上手Gulp。不要怕，它其实很简单，我会分为五步向你介绍gulp并帮助你完成一些惊人的事情。那就直接开始吧。
+
+第一步：安装Node首先，最基本也最重要的是，我们需要搭建node环境。访问 http://nodejs.org ，然后点击大大的绿色的 install 按钮，下载完成后直接运行程序，就一切准备就绪">
+<meta name="twitter:image" content="http://i2.buimg.com/7f9b166ae359578b.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：安装Node"><span class="toc-text">第一步：安装Node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步：使用命令行"><span class="toc-text">第二步：使用命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新建gulpfile文件"><span class="toc-text">新建gulpfile文件</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="title-前端构建工具gulp入门" class="article article-type-title" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">前端构建工具gulp入门</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>左峰</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/05/17/前端构建工具gulp入门/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>前言：本文假设你之前没有用过任何任务脚本（task runner）和命令行工具，一步步教你上手Gulp。不要怕，它其实很简单，我会分为五步向你介绍gulp并帮助你完成一些惊人的事情。那就直接开始吧。<br></p>
+<hr>
+<h3 id="第一步：安装Node"><a href="#第一步：安装Node" class="headerlink" title="第一步：安装Node"></a>第一步：安装Node</h3><p>首先，最基本也最重要的是，我们需要搭建node环境。访问 <a href="http://nodejs.org" target="_blank" rel="external">http://nodejs.org</a> ，然后点击大大的绿色的 install 按钮，下载完成后直接运行程序，就一切准备就绪。 npm 会随着安装包一起安装，稍后会用到它。</p>
+<hr>
+<h3 id="第二步：使用命令行"><a href="#第二步：使用命令行" class="headerlink" title="第二步：使用命令行"></a>第二步：使用命令行</h3><p>也许现在你还不是很了解什么是命令行——OSX中的终端（Terminal），windows中的命令提示符（Command Prompt），但很快你就会知道。它看起来没那么简单，但一旦掌握了它的窍门，就可以很方便的执行很多命令行程序，比如Sass，Yeoman和Git等，这些都是非常有用的工具。<br><br>为了确保Node已经正确安装，我们执行几个简单的命令。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">```&lt;/br&gt;</span><br><span class="line">回车（Enter），如果正确安装的话，你会看到所安装的Node的版本号，接下来看看npm。&lt;/br&gt;</span><br></pre></td></tr></table></figure></p>
+<p>npm -v<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">这同样能得到npm的版本号。</span><br><span class="line">如果这两行命令没有得到返回，可能node就没有安装正确，尝试重启下命令行工具，如果还不行的话，只能回到第一步进行重装。</span><br><span class="line">___</span><br><span class="line">### 第三步：定位到项目</span><br><span class="line"></span><br><span class="line">现在，我们已经大致了解了命令行并且知道如何简单使用它，接下来只需要两个简单的命令就能定位到文件目录并看看目录里都有些什么文件。</span><br><span class="line"></span><br><span class="line">1)cd，定位到目录&lt;/br&gt;</span><br><span class="line">2)ls，列出文件列表&lt;/br&gt;</span><br><span class="line">___</span><br><span class="line">###  第四步：安装gulp</span><br><span class="line">NPM是基于命令行的node包管理工具，它可以将node的程序模块安装到项目中，在它的 官网 中可以查看和搜索所有可用的程序模块。</span><br></pre></td></tr></table></figure></p>
+<p>sudo npm install -g gulp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">####解析：</span><br><span class="line">1）sudo是以管理员身份执行命令，一般会要求输入电脑密码。&lt;/br&gt;</span><br><span class="line">2）npm是安装node模块的工具，执行install命令&lt;/br&gt;</span><br><span class="line">3）-g表示在全局环境安装，以便任何项目都能使用它&lt;/br&gt;</span><br><span class="line">4）最后，gulp是将要安装的node模块的名字&lt;/br&gt;</span><br><span class="line">接下来，我们需要将gulp安装到项目本地</span><br></pre></td></tr></table></figure></p>
+<p>sudo npm install –save-dev gulp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这里，我们使用 —-save-dev 来更新package.json文件，更新 devDependencies 值，以表明项目需要依赖gulp。</span><br><span class="line">### 第五步：新建Gulpfile文件，运行gulp</span><br><span class="line">安装好gulp后我们需要告诉它要为我们执行哪些任务，首先，我们自己需要弄清楚项目需要哪些任务。&lt;/br&gt;</span><br><span class="line">   检查Javascript&lt;/br&gt;</span><br><span class="line">   编译Sass（或Less之类的）文件&lt;/br&gt;</span><br><span class="line">   合并Javascript&lt;/br&gt;</span><br><span class="line">   压缩并重命名合并后的Javascript&lt;/br&gt;</span><br><span class="line"></span><br><span class="line">##### 安装依赖</span><br></pre></td></tr></table></figure></p>
+<p>npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-rename –save-dev<br>```<br><br>注意：1）这里是一种复合写法 安装的是gulp-jshint、gulp-sass 、gulp-concat、gulp-uglify、gulp-renam这几种我们将要用到的插件 这里是可以一个一个安装的 方法同上<br><br>    2)如果上面的命令出现错误时 可以在前面添加 <strong>sudo</strong> 再试一次 .</p>
+<h5 id="新建gulpfile文件"><a href="#新建gulpfile文件" class="headerlink" title="新建gulpfile文件"></a>新建gulpfile文件</h5><p>现在，组件都安装完毕，我们需要新建gulpfile文件以指定gulp需要为我们完成什么任务。<br><br></p>
+<p>gulp只有五个方法： task ， run ， watch ， src ，和 dest ，在项目根目录新建一个js文件并命名为 gulpfile.js ，把下面的代码粘贴进去：<br><br>代码图片如下：<br><img src="http://i2.buimg.com/7f9b166ae359578b.png" alt=""><br> 代码如下：<br>gulpfile.js<br><br><code><br>    // 引入 gulp<br><br>    var gulp = require(‘gulp’);<br><br>        // 引入组件<br><br>    var jshint = require(‘gulp-jshint’);<br><br>    var sass = require(‘gulp-sass’);<br><br>    var concat = require(‘gulp-concat’);<br><br>    var uglify = require(‘gulp-uglify’);<br><br>    var rename = require(‘gulp-rename’);<br><br>        // 检查脚本<br><br>    gulp.task(‘lint’, function() {<br><br>    gulp.src(‘./js/<em>.js’)<br><br>        .pipe(jshint())<br><br>        .pipe(jshint.reporter(‘default’));<br><br>    });<br><br>        // 编译Sass<br><br>    gulp.task(‘sass’, function() {<br><br>    gulp.src(‘./scss/</em>.scss’)<br><br>            .pipe(sass())<br><br>            pipe(gulp.dest(‘./css’));<br><br>    });<br><br>        // 合并，压缩文件<br><br>    gulp.task(‘scripts’, function() {<br><br>    gulp.src(‘./js/<em>.js’)<br><br>        .pipe(concat(‘all.js’))<br><br>        .pipe(gulp.dest(‘./dist’))<br><br>        .pipe(rename(‘all.min.js’))<br><br>        .pipe(uglify())<br><br>        .pipe(gulp.dest(‘./dist’));<br><br>    });<br><br>        // 默认任务<br><br>    gulp.task(‘default’, function(){<br><br>        gulp.run(‘lint’, ‘sass’, ‘scripts’);<br><br>        // 监听文件变化<br><br>    gulp.watch(‘./js/</em>.js’, function(){<br><br>        gulp.run(‘lint’, ‘sass’, ‘scripts’);<br><br>    });<br><br>    });<br><br></code></p>
+<hr>
+<p>现在，分段解释下这段代码。<br></p>
+<p>#####引入组件<br><code><br>// 引入 gulp<br><br>    var gulp = require(‘gulp’);<br><br>        // 引入组件<br><br>    var jshint = require(‘gulp-jshint’);<br><br>    var sass = require(‘gulp-sass’);<br><br>    var concat = require(‘gulp-concat’);<br><br>    var uglify = require(‘gulp-uglify’);<br><br>    var rename = require(‘gulp-rename’);<br><br></code><br>这一步，我们引入了核心的gulp和其他依赖组件，接下来，分开创建lint, sass, scripts 和 default这四个不同的任务。<br></p>
+<p>#####Lint任务会检查 js/ 目录下得js文件有没有报错或警告<br><code><br>gulp.task(‘lint’, function() {<br><br>    gulp.src(‘./js/*.js’)<br><br>        .pipe(jshint())<br><br>        .pipe(jshint.reporter(‘default’));<br><br>    });<br><br></code></p>
+<p>#####scripts任务会合并 js/ 目录下得所有得js文件并输出到 dist/ 目录，然后gulp会重命名、压缩合并的文件，也输出到 dist/ 目录。<br><code><br>gulp.task(‘scripts’, function() {<br><br>    gulp.src(‘./js/*.js’)<br><br>        .pipe(concat(‘all.js’))<br><br>        .pipe(gulp.dest(‘./dist’))<br><br>        .pipe(rename(‘all.min.js’))<br><br>        .pipe(uglify())<br><br>        .pipe(gulp.dest(‘./dist’));<br><br>    });<br><br></code></p>
+<p>#####default任务 使用 .run() 方法关联和运行我们上面定义的任务，使用 .watch() 方法去监听指定目录的文件变化，当有文件变化时，会运行回调定义的其他任务。<br><code><br>gulp.task(‘default’, function(){<br><br>    gulp.run(‘lint’, ‘sass’, ‘scripts’);<br><br>    gulp.watch(‘./js/*.js’, function(){<br><br>        gulp.run(‘lint’, ‘sass’, ‘scripts’);<br><br>    });<br><br>});<br><br></code></p>
+<p>#####运行gulp任务<br><code><br>gulp<br></code><br>上面的支行代码就是直接执行gulp里面的默认任务<br><br>如果要执行其他任务 方法如下代码：<br><code><br>gulp sass<br></code></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-title">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/05/17/前端构建工具gulp入门/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
